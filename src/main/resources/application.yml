@@ -6,4 +6,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+      dialect: MySQLDialect
     show-sql: true

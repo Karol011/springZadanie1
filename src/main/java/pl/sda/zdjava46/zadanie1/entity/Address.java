@@ -1,6 +1,7 @@
 package pl.sda.zdjava46.zadanie1.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -13,8 +14,10 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id")
     private Long id;
     @OneToMany(mappedBy = "address")
+    @Cascade(org.hibernate.annotations.CascadeType.DETACH)
     Set<User> users;
     @Column(length=50, nullable=false, unique=false)
     private String street;

@@ -3,6 +3,7 @@ package pl.sda.zdjava46.zadanie1.controller;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.zdjava46.zadanie1.entity.User;
 import pl.sda.zdjava46.zadanie1.repository.UserRepository;
+import pl.sda.zdjava46.zadanie1.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,24 +12,29 @@ import java.util.Optional;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserRepository userRepository;
+    private UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/all")
     public List<User> findAll() {
-        return userRepository.findAll();
+        return userService.findAll();
     }
 
     @GetMapping(value = "/{id}")
     public Optional<User> findUserById(@PathVariable Long id) {
-        return userRepository.findById(id);
+        return userService.getUserRepository().findById(id);
+    }
+
+    @PostMapping("/add")
+    public User newUser(@RequestBody User newUser) {
+        return userService.getUserRepository().save(newUser);
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public void deleteUserById(@PathVariable Long id) {
-        userRepository.deleteById(id);
+        userService.getUserRepository().deleteById(id);
     }
 }

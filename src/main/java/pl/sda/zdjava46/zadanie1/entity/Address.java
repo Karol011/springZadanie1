@@ -16,8 +16,11 @@ public class Address {
     private Long id;
     @OneToMany(mappedBy = "address")
     Set<User> users;
+    @Column(length=50, nullable=false, unique=false)
     private String street;
+    @Column(length=50, nullable=false, unique=false)
     private String zipCode;
+    @Column(length=50, nullable=false, unique=false)
     private String city;
 
     @Override

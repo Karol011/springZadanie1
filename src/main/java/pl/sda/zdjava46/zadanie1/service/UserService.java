@@ -13,9 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
+    //fixme
     public List<User> findAll() {
-        return (List<User>) userRepository.findAll();
+        return userRepository.findAll();
     }
 }

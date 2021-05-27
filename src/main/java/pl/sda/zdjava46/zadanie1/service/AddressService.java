@@ -10,5 +10,5 @@ import pl.sda.zdjava46.zadanie1.repository.AddressRepository;
 @AllArgsConstructor
 public class AddressService {
 
-    private AddressRepository addressRepository;
+    private final AddressRepository addressRepository;
 }

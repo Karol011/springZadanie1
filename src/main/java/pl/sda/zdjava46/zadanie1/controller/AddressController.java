@@ -1,8 +1,8 @@
 package pl.sda.zdjava46.zadanie1.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.zdjava46.zadanie1.entity.Address;
-import pl.sda.zdjava46.zadanie1.entity.User;
 import pl.sda.zdjava46.zadanie1.service.AddressService;
 
 import java.util.List;
@@ -10,13 +10,12 @@ import java.util.Optional;
 
 @RestController()
 @RequestMapping("/address")
+@AllArgsConstructor
 public class AddressController {
 
-    private AddressService addressService;
+    private final AddressService addressService;
 
-    public AddressController(AddressService addressService) {
-        this.addressService = addressService;
-    }
+
 
     @GetMapping("/all")
     public List<Address> findAll() {

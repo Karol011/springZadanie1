@@ -4,8 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Data
@@ -18,7 +18,7 @@ public class Address {
     private Long id;
     @OneToMany(mappedBy = "address")
     @Cascade(org.hibernate.annotations.CascadeType.DETACH)
-    Set<User> users;
+    List<User> users;
     @Column(length=50, nullable=false, unique=false)
     private String street;
     @Column(length=50, nullable=false, unique=false)

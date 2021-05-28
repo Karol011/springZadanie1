@@ -23,17 +23,17 @@ public class AddressController {
         return addressService.getAddressRepository().findAll();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public Optional<Address> findAddressById(@PathVariable Long id) {
         return addressService.getAddressRepository().findById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public Address newAddress(@RequestBody Address newAddress) {
         return addressService.getAddressRepository().save(newAddress);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAddressById(@PathVariable Long id) {
         addressService.getAddressRepository().deleteById(id);
     }

@@ -2,7 +2,6 @@ package pl.sda.zdjava46.zadanie1.controller;
 
 import org.springframework.web.bind.annotation.*;
 import pl.sda.zdjava46.zadanie1.entity.User;
-import pl.sda.zdjava46.zadanie1.repository.UserRepository;
 import pl.sda.zdjava46.zadanie1.service.UserService;
 
 import java.util.List;
@@ -28,12 +27,12 @@ public class UserController {
         return userService.getUserRepository().findById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public User newUser(@RequestBody User newUser) {
         return userService.getUserRepository().save(newUser);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteUserById(@PathVariable Long id) {
         userService.getUserRepository().deleteById(id);
     }

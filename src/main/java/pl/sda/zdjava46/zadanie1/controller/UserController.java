@@ -31,7 +31,8 @@ public class UserController {
         return userService.getUserRepository().save(newUser);
     }
 
-    @DeleteMapping(value = "{id}")
+
+    @DeleteMapping(value = "/{id}")
     public void deleteUserById(@PathVariable Long id) {
         userService.getUserRepository().deleteById(id);
     }

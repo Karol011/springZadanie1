@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 import pl.sda.zdjava46.zadanie1.entity.User;
+import pl.sda.zdjava46.zadanie1.exceptions.userNotFoundException;
 import pl.sda.zdjava46.zadanie1.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Getter
@@ -15,8 +17,23 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    //fixme
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public User findById(Long id) {
+        return getUserRepository()
+                .findById(id)
+                .orElseThrow(() -> new userNotFoundException("user with id " + id + " not found"));
     }
+
+    public List<User> findAll() {
+        return getUserRepository().findAll();
+    }
+
+    public void save(User newUser) {
+        getUserRepository().save(newUser);
+    }
+
+    public void deleteById(Long id) {
+        getUserRepository().deleteById(id);
+    }
+
+
 }

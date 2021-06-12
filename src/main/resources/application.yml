@@ -3,7 +3,8 @@ spring:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/springzadanie1?serverTimezone=UTC&useLegacyDatetimeCode=false
     username: root
     password: admin
-  jpa:
+
+    jpa:
     hibernate:
       ddl-auto: update
       dialect: MySQLDialect
@@ -12,3 +13,7 @@ spring:
     user:
       name: user
       password: user
+  sql:
+    init:
+      enabled: true
+

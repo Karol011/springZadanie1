@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController()
-@RequestMapping("/address")
+@RequestMapping("/addresses")
 public class AddressController {
 
     private AddressService addressService;
@@ -18,17 +18,17 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public List<Address> findAll() {
         return addressService.getAddressRepository().findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/address")
     public Optional<Address> findAddressById(@PathVariable Long id) {
         return addressService.getAddressRepository().findById(id);
     }
 
-    @PostMapping()
+    @PostMapping
     public Address newAddress(@RequestBody Address newAddress) {
         return addressService.getAddressRepository().save(newAddress);
     }

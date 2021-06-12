@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/springzadanie1?serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: admin
+
+    jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: MySQLDialect
+    show-sql: true
+  security:
+    user:
+      name: user
+      password: user
+  sql:
+    init:
+      enabled: true
+

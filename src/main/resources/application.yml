@@ -8,3 +8,7 @@ spring:
       ddl-auto: update
       dialect: MySQLDialect
     show-sql: true
+  security:
+    user:
+      name: user
+      password: user

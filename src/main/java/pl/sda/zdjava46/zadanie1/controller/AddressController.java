@@ -8,26 +8,26 @@ import pl.sda.zdjava46.zadanie1.service.AddressService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController()
-@RequestMapping("/address")
+@RestController
 @AllArgsConstructor
+@RequestMapping("/addresses")
 public class AddressController {
 
     private final AddressService addressService;
 
 
 
-    @GetMapping("/all")
+    @GetMapping
     public List<Address> findAll() {
         return addressService.getAddressRepository().findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/address")
     public Optional<Address> findAddressById(@PathVariable Long id) {
         return addressService.getAddressRepository().findById(id);
     }
 
-    @PostMapping()
+    @PostMapping
     public Address newAddress(@RequestBody Address newAddress) {
         return addressService.getAddressRepository().save(newAddress);
     }

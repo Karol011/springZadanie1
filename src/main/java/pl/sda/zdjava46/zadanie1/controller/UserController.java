@@ -1,6 +1,7 @@
 package pl.sda.zdjava46.zadanie1.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,21 +13,22 @@ import pl.sda.zdjava46.zadanie1.service.UserService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController()
-@RequestMapping("/user")
-@AllArgsConstructor
-@Slf4j
+
+@RestController
+@RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
 
-    @GetMapping()
+
+    @GetMapping
     public List<User> findAll() {
         return userService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/user")
     public User findUserById(@PathVariable Long id) {
         return userService.findById(id);
     }
@@ -50,7 +52,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUserById(@PathVariable Long id) {
         userService.deleteById(id);
     }

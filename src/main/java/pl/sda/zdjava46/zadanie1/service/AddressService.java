@@ -2,6 +2,8 @@ package pl.sda.zdjava46.zadanie1.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pl.sda.zdjava46.zadanie1.entity.Address;
 import pl.sda.zdjava46.zadanie1.entity.User;
@@ -29,8 +31,16 @@ public class AddressService {
                 .orElseThrow(() -> new addressNotFoundException("address with id " + id + " not found"));
     }
 
-    public Address save(Address newAddress) {
-        return addressRepository.save(newAddress);
+    public ResponseEntity<Address> save(Address newAddress) {
+        Address address = new Address();
+        address.setStreet(newAddress.getStreet());
+        address.setCity(newAddress.getCity());
+        address.setZipCode(newAddress.getZipCode());
+        address.setUsers(newAddress.getUsers());
+
+        addressRepository.save(newAddress);
+        return new ResponseEntity<Address>(address,
+                HttpStatus.CREATED);
     }
 
     public void deleteById(Long id) {

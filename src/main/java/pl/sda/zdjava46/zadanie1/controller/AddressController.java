@@ -1,6 +1,7 @@
 package pl.sda.zdjava46.zadanie1.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.zdjava46.zadanie1.entity.Address;
 import pl.sda.zdjava46.zadanie1.service.AddressService;
@@ -28,7 +29,7 @@ public class AddressController {
     }
 
     @PostMapping
-    public Address newAddress(@RequestBody Address newAddress) {
+    public ResponseEntity<Address> newAddress(@RequestBody Address newAddress) {
         return addressService.save(newAddress);
     }
 

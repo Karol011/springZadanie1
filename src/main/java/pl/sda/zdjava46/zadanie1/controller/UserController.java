@@ -41,7 +41,8 @@ public class UserController {
 
         if (newUser.equals(null)) {
             throw new RuntimeException("You must define new user");
-        } else {
+        }
+        else {
             userService.save(newUser);
             return new ResponseEntity<>("Succesfully created new user with id " + newUser.getId(),
                     HttpStatus.OK);

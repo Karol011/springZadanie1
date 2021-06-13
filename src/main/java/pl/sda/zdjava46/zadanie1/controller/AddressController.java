@@ -19,22 +19,22 @@ public class AddressController {
 
     @GetMapping
     public List<Address> findAll() {
-        return addressService.getAddressRepository().findAll();
+        return addressService.findAll();
     }
 
     @GetMapping("/{id}/address")
-    public Optional<Address> findAddressById(@PathVariable Long id) {
-        return addressService.getAddressRepository().findById(id);
+    public Address findAddressById(@PathVariable Long id) {
+        return addressService.findById(id);
     }
 
     @PostMapping
     public Address newAddress(@RequestBody Address newAddress) {
-        return addressService.getAddressRepository().save(newAddress);
+        return addressService.save(newAddress);
     }
 
     @DeleteMapping("/{id}")
     public void deleteAddressById(@PathVariable Long id) {
-        addressService.getAddressRepository().deleteById(id);
+        addressService.deleteById(id);
     }
 
 

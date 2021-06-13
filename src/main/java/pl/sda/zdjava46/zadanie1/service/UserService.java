@@ -2,6 +2,9 @@ package pl.sda.zdjava46.zadanie1.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sda.zdjava46.zadanie1.entity.User;
 import pl.sda.zdjava46.zadanie1.exceptions.userNotFoundException;
@@ -16,6 +19,7 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
     public User findById(Long id) {
         return getUserRepository()
@@ -34,10 +38,18 @@ public class UserService {
         return getUserRepository().findAll();
     }
 
-    public void save(User newUser) {
-        getUserRepository().save(newUser);
-    }
+    public ResponseEntity<User> save(User newUser) {
 
+        User user = new User();
+        user.setName(newUser.getName());
+        user.setSurname(newUser.getName());
+        user.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        user.setRole(newUser.getRole());
+        userRepository.save(user);
+
+        return new ResponseEntity<>(user,
+                HttpStatus.OK);
+    }
     public void deleteById(Long id) {
         getUserRepository().deleteById(id);
     }

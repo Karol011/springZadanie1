@@ -20,8 +20,6 @@ public class UserController {
 
     private final UserService userService;
 
-
-
     @GetMapping
     public List<User> findAll() {
         return userService.findAll();
@@ -39,14 +37,12 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<String> newUser(@RequestBody User newUser) {
+    public ResponseEntity<User> newUser(@RequestBody User newUser) {
 
         if (newUser.equals(null)) {
             throw new RuntimeException("You must define new user");
         } else {
-            userService.save(newUser);
-            return new ResponseEntity<>("Succesfully created new user with id " + newUser.getId(),
-                    HttpStatus.OK);
+            return userService.save(newUser);
         }
     }
 

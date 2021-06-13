@@ -7,7 +7,10 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
+      #przy pierwszym uruchomieniu proponuje dac create-drop, stworzyc jakies rekordy przez postmana
+      #i potem zrestartowac apke z update
       ddl-auto: update
+      #domyslne dane, gdybym nie wyciagal ich z bazy danych. To istnialby tylko 1 user z takimi danymi logowania
   security:
     user:
       name: user

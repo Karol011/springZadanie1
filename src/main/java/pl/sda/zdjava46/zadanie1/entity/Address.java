@@ -18,6 +18,7 @@ public class Address {
     private Long id;
 
     @OneToMany(mappedBy = "address")
+    //DETACH jak usune adres a jakis user go ma to go po prostu odlacz a nie skasuj (usera) calkowicie
     @Cascade(org.hibernate.annotations.CascadeType.DETACH)
     List<User> users;
     @Column(length=50, nullable=false, unique=false)

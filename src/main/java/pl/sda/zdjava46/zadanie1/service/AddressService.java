@@ -12,7 +12,6 @@ import pl.sda.zdjava46.zadanie1.exceptions.userNotFoundException;
 import pl.sda.zdjava46.zadanie1.repository.AddressRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Getter

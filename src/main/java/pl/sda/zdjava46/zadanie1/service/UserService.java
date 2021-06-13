@@ -43,12 +43,13 @@ public class UserService {
         User user = new User();
         user.setName(newUser.getName());
         user.setSurname(newUser.getName());
+        //hashuje haslo za pomoca Beana w klasie SecurityConfig
         user.setPassword(passwordEncoder.encode(newUser.getPassword()));
         user.setRole(newUser.getRole());
         userRepository.save(user);
 
         return new ResponseEntity<>(user,
-                HttpStatus.OK);
+                HttpStatus.CREATED);
     }
     public void deleteById(Long id) {
         getUserRepository().deleteById(id);

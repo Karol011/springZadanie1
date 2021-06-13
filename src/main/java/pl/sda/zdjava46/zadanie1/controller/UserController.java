@@ -25,6 +25,7 @@ public class UserController {
         return userService.findAll();
     }
 
+    //{id}/user a nie samo {id}, bo to podobno dobra praktyka
     @GetMapping("/{id}/user")
     public User findUserById(@PathVariable Long id) {
         return userService.findById(id);

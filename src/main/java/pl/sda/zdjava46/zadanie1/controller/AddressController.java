@@ -23,6 +23,7 @@ public class AddressController {
         return addressService.findAll();
     }
 
+    //{id}/address a nie samo {id}, bo to podobno dobra praktyka
     @GetMapping("/{id}/address")
     public Address findAddressById(@PathVariable Long id) {
         return addressService.findById(id);

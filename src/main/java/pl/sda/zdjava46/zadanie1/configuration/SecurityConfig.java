@@ -24,8 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                //dla wszystkiego po addresses/ wymagaj zalogowanego uzytkownika
                 .antMatchers("/addresses/**").authenticated()
+                //dla wszystkiego po users/ pozwol KAZDEMU na jakiekolwiek zmiany
                 .antMatchers("/users/**").permitAll()
+                //nadpisuje wczesniejsze pozwolenie i wymaga zalogowania przy metodzie DELETE
                 .antMatchers(HttpMethod.DELETE, "/users/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
@@ -35,6 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .and()
+                /*
+                Spring Security oferuje możliwość bronienia się przed atakami CSFR.
+                 Atak ten jest próbą wrobienia użytkownika we wpisanie jego nazwy użytkownika i hasła na stronie,
+                  która np. przypomina stronę docelową.
+
+                  Włączony CSRF uniemożliwia wysłania żądania z niektórymi metodami
+                   (np. POST) za pomocą REST API.
+                 */
                 .csrf().disable();
     }
 

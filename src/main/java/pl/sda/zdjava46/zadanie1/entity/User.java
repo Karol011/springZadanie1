@@ -21,7 +21,9 @@ public class User{
     @Column(length=50, nullable=false, unique=false)
     private String surname;
 
+    //length 200 bo bcrypt encoder tworzy hasla dluzsze niz 50 znakow
     @Column(length=200, nullable=false, unique=false)
+    //dzieki temu podczas GET na userze nie jest zwracane nam haslo
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 

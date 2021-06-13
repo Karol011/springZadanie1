@@ -18,6 +18,7 @@ public class UserDetailsAdapter implements UserDetails {
     }
 
     @Override
+    //Role jeszcze u mnie nie dzialaja, są bo są
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(user.getRole()));
     }

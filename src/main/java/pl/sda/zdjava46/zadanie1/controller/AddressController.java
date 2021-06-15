@@ -2,6 +2,7 @@ package pl.sda.zdjava46.zadanie1.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.zdjava46.zadanie1.entity.Address;
 import pl.sda.zdjava46.zadanie1.service.AddressService;
@@ -34,7 +35,8 @@ public class AddressController {
         return addressService.save(newAddress);
     }
 
-    @DeleteMapping("/{id}")
+    @Secured("ROLE_ADMIN")
+    @DeleteMapping("/{id}/address")
     public void deleteAddressById(@PathVariable Long id) {
         addressService.deleteById(id);
     }

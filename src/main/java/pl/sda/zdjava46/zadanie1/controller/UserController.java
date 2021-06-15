@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.zdjava46.zadanie1.entity.User;
 import pl.sda.zdjava46.zadanie1.exceptions.userNotFoundException;
@@ -47,8 +48,8 @@ public class UserController {
         }
     }
 
-
-    @DeleteMapping("/{id}")
+    @Secured("ROLE_ADMIN")
+    @DeleteMapping("/{id}/user")
     public void deleteUserById(@PathVariable Long id) {
         userService.deleteById(id);
     }
